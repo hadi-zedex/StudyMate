@@ -1,0 +1,14 @@
+# Backend dependencies (FastAPI server on Render)
+fastapi
+uvicorn[standard]
+inngest
+sentence-transformers
+llama-index-core
+llama-index-readers-file
+qdrant-client
+google-genai
+python-dotenv
+pydantic
+python-multipart
+pypdf
+requests

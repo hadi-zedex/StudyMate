@@ -1,0 +1,37 @@
+﻿# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+
+# Qdrant local storage (data files only, keep folder)
+qdrant_storage/*
+!qdrant_storage/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Internal dev docs (not useful for GitHub visitors)
+docs/api.md
+docs/modules.md
+docs/README.md
+docs/overview.md
+docs/deployment.md
+
+
