@@ -19,6 +19,11 @@ st.set_page_config(
 # ── Minimal style tweaks ───────────────────────────────────────────────────────
 st.markdown("""
 <style>
+    /* Hide top header (Fork, GitHub icon, Deploy menu) and footer */
+    header[data-testid="stHeader"] { visibility: hidden; height: 0%; }
+    #MainMenu { visibility: hidden; }
+    footer { visibility: hidden; }
+    
     [data-testid="stSidebar"] { background-color: #171717; }
     .stChatMessage { background: transparent !important; }
     div[data-testid="stFileUploader"] label { color: #8e8ea0; font-size: 13px; }
