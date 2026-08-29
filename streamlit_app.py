@@ -19,11 +19,23 @@ st.set_page_config(
 # ── Minimal style tweaks ───────────────────────────────────────────────────────
 st.markdown("""
 <style>
-    /* Hide top header (Fork, GitHub icon, Deploy menu) and footer */
-    header[data-testid="stHeader"] { visibility: hidden; height: 0%; }
-    #MainMenu { visibility: hidden; }
-    footer { visibility: hidden; }
+    /* Hide top header, fork button, and toolbar */
+    header[data-testid="stHeader"], #MainMenu, .stAppDeployButton {
+        display: none !important;
+        visibility: hidden !important;
+    }
     
+    /* Hide bottom Streamlit Cloud 'Hosted with Streamlit' & 'Created by' badges */
+    footer,
+    [data-testid="stStatusWidget"],
+    div[class*="viewerBadge"],
+    div[class*="manageApp"],
+    div[class*="Profile"],
+    div[class*="styles_viewerBadge"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
     [data-testid="stSidebar"] { background-color: #171717; }
     .stChatMessage { background: transparent !important; }
     div[data-testid="stFileUploader"] label { color: #8e8ea0; font-size: 13px; }
