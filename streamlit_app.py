@@ -97,7 +97,7 @@ with st.sidebar:
 
     # Username prompt — gates everything else
     if not st.session_state.username:
-        uname = st.text_input("Enter your name to get started", placeholder="e.g. hadi", key="uname_input")
+        uname = st.text_input("Enter your name to get started", key="uname_input")
         if st.button("Start", key="uname_btn"):
             slug = uname.strip().lower().replace(" ", "-")
             if slug:
