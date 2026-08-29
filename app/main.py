@@ -2,7 +2,7 @@ import logging
 import shutil
 import tempfile
 from pathlib import Path
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import inngest
@@ -144,18 +144,22 @@ def create_subject(body: SubjectCreate):
 
 @app.post("/api/subjects/{subject}/upload")
 def upload_pdf(subject: str, file: UploadFile = File(...)):
+    import traceback
     suffix = Path(file.filename).suffix or ".pdf"
     with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
         shutil.copyfileobj(file.file, tmp)
         tmp_path = tmp.name
     try:
-        chunks = load_and_chunk_pdf(tmp_path)
+        chunks = load_and_chunk_pdf(Path(tmp_path))   # Path() required by PDFReader
         vecs   = embed_texts(chunks)
         src    = file.filename
         ids    = [str(uuid.uuid5(uuid.NAMESPACE_URL, f"{src}:{i}")) for i in range(len(chunks))]
         payloads = [{"source": src, "text": chunks[i]} for i in range(len(chunks))]
         QdrantStorage(collection=subject).upsert(ids, vecs, payloads)
         return {"ingested": len(chunks), "subject": subject, "filename": file.filename}
+    except Exception as e:
+        logging.error(f"Upload failed: {traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=str(e))
     finally:
         os.unlink(tmp_path)
 
