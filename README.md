@@ -4,10 +4,14 @@
 
 StudyMate is a RAG-powered study assistant that answers questions **based on your own class materials** — lecture slides, textbooks, and notes — not generic internet knowledge.
 
+[![Live App](https://img.shields.io/badge/Live_Demo-Streamlit_App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://studymate-ai-app.streamlit.app/)
+
 [![Python](https://img.shields.io/badge/Python-3.11+-blue)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-latest-green)](https://fastapi.tiangolo.com)
 [![Streamlit](https://img.shields.io/badge/Streamlit-UI-red)](https://streamlit.io)
 [![Qdrant](https://img.shields.io/badge/Qdrant-VectorDB-purple)](https://qdrant.tech)
+
+🚀 **Live Website:** [studymate-ai-app.streamlit.app](https://studymate-ai-app.streamlit.app/)
 
 ---
 
